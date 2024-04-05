@@ -23,12 +23,14 @@ namespace Lab03.Repositories
 
         public async Task AddAsync(Product product)
         {
-            _context.Products.Add(product); await _context.SaveChangesAsync();
+            _context.Products.Add(product); 
+            await _context.SaveChangesAsync();
         }
 
         public async Task UpdateAsync(Product product)
         {
-            _context.Products.Update(product); await _context.SaveChangesAsync();
+            _context.Products.Update(product); 
+            await _context.SaveChangesAsync();
         }
         public async Task DeleteAsync(int id)
         {
