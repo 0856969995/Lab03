@@ -85,6 +85,23 @@ namespace Lab03.Controllers
             }
             return View(product);
         }
+        // Hiển thị form xác nhận xóa sản phẩm
+        public async Task<IActionResult> Delete(int id)
+        {
+            var product = await _productRepository.GetByIdAsync(id); 
+            if (product == null)
+            {
+                return NotFound();
+            }
+            return View(product);
+        }
+        // Xử lý xóa sản phẩm
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            await _productRepository.DeleteAsync(id); 
+            return RedirectToAction(nameof(Index));
+        }
 
         private async Task<string> SaveImage(IFormFile image)
         {
